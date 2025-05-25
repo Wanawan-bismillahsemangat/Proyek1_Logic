@@ -48,7 +48,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: url('/image/tentang\ kami.img.jpg'); /* replace with your hero image */
+  background-image: url('image/tentang\ kami.img.jpg'); /* replace with your hero image */
   background-size: cover;
   background-position: center;
   padding: 100px 40px;
