@@ -53,6 +53,10 @@ body {
   background-position: center;
   padding: 100px 40px;
   color: white;
+  background: linear-gradient(120deg, #fff8f0 60%, #ffe5c0 100%);
+  background-size: cover;
+  background-position: center 0;
+  transition: background-position 0.3s;
 }
 
 /* Gradasi di bawah gambar */
@@ -145,6 +149,8 @@ body {
   font-size: 1rem;
   transition: background 0.2s, transform 0.15s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .order-btn:hover {
@@ -155,6 +161,26 @@ body {
 .order-btn.clicked {
   background: #4caf50;
   transform: scale(1.1);
+}
+
+.ripple {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(123,63,0,0.18);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple-anim 0.5s linear;
+  left: 50%; top: 50%;
+  translate: -50% -50%;
+}
+
+@keyframes ripple-anim {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 
 /* Location Section */
@@ -372,6 +398,30 @@ body {
 }
 @media (max-width: 500px) {
   .cart-modal-content { min-width: 90vw; }
+}
+
+/* Animations */
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  transition: opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1);
+}
+section, .footer {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+/* Shake animation for cart icon */
+#cart-icon.shake {
+  animation: shake-cart 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake-cart {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+  100% { transform: none; }
 }
 
 

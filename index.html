@@ -21,10 +21,22 @@
         </ul>
       </nav>
       <div class="icons">
-        <a href="/Website projek 1/Login/index.html">
-            <img src="image/pngtree-user-icon-image_1187018-removebg-preview.png" alt="User" />
+        <a href="auth/login.html">
+            <img src="image/pngtree-user-icon-image_1187018-removebg-preview.png" alt="User" onerror="this.onerror=null;this.src='image/IG.jpg';" />
         </a>
-        <img src="image/cart-icon-16.png" alt="Cart" />
+        <div class="cart-wrapper" style="position:relative;display:inline-block;">
+          <img id="cart-icon" src="image/cart-icon-16.png" alt="Cart" onerror="this.onerror=null;this.src='image/IG.jpg';" />
+          <span id="cart-count" class="cart-count">0</span>
+          <div id="cart-modal" class="cart-modal">
+            <div class="cart-modal-content">
+              <h3>Keranjang</h3>
+              <ul id="cart-items" class="cart-items"></ul>
+              <div class="cart-modal-footer">
+                <button id="close-cart" class="auth-btn" style="margin-top:10px;">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -120,114 +132,7 @@
   <p>Lorem ipsum dolor sit amet, consectet adscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </footer>
 
-<script>
-// Smooth scroll for nav links
-const navLinks = document.querySelectorAll('.nav-links a');
-navLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  });
-});
-
-// Fitur keranjang
-let cartCount = 0;
-const cartCountElem = document.getElementById('cart-count');
-const orderBtns = document.querySelectorAll('.order-btn');
-const cartModal = document.getElementById('cart-modal');
-const cartIcon = document.getElementById('cart-icon');
-const cartItemsElem = document.getElementById('cart-items');
-const closeCartBtn = document.getElementById('close-cart');
-let cart = [];
-
-function renderCart() {
-  cartItemsElem.innerHTML = '';
-  if (cart.length === 0) {
-    cartItemsElem.innerHTML = '<li style="text-align:center;color:#888;">Keranjang kosong</li>';
-    return;
-  }
-  cart.forEach((item, idx) => {
-    const li = document.createElement('li');
-    li.className = 'cart-item';
-    li.innerHTML = `
-      <span>${item.name} x <input type="number" min="1" value="${item.qty}" data-idx="${idx}" class="cart-qty-input" style="width:40px;"> </span>
-      <button class="cart-remove-btn" data-idx="${idx}">Hapus</button>
-    `;
-    cartItemsElem.appendChild(li);
-  });
-}
-
-cartIcon.addEventListener('click', () => {
-  renderCart();
-  cartModal.classList.add('show');
-});
-closeCartBtn.addEventListener('click', () => {
-  cartModal.classList.remove('show');
-});
-
-cartItemsElem.addEventListener('input', function(e) {
-  if (e.target.classList.contains('cart-qty-input')) {
-    const idx = e.target.getAttribute('data-idx');
-    let val = parseInt(e.target.value);
-    if (val < 1 || isNaN(val)) val = 1;
-    cart[idx].qty = val;
-    updateCartCount();
-  }
-});
-cartItemsElem.addEventListener('click', function(e) {
-  if (e.target.classList.contains('cart-remove-btn')) {
-    const idx = e.target.getAttribute('data-idx');
-    cart.splice(idx, 1);
-    updateCartCount();
-    renderCart();
-  }
-});
-
-function updateCartCount() {
-  cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
-  cartCountElem.textContent = cartCount;
-}
-
-orderBtns.forEach((btn, i) => {
-  btn.addEventListener('click', function() {
-    btn.classList.add('clicked');
-    // Simulasi nama produk
-    const name = 'Produk ' + (i+1);
-    const found = cart.find(item => item.name === name);
-    if (found) {
-      found.qty++;
-    } else {
-      cart.push({ name, qty: 1 });
-    }
-    updateCartCount();
-    cartCountElem.classList.add('bump');
-    showToast('Pesanan ditambahkan ke keranjang!');
-    setTimeout(() => {
-      btn.classList.remove('clicked');
-      cartCountElem.classList.remove('bump');
-    }, 300);
-  });
-});
-
-// Notifikasi sederhana
-function showToast(msg) {
-  let toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerText = msg;
-  document.body.appendChild(toast);
-  setTimeout(() => { toast.classList.add('show'); }, 10);
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 300);
-  }, 1500);
-}
-</script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
