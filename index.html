@@ -27,6 +27,15 @@
         <div class="cart-wrapper" style="position:relative;display:inline-block;">
           <img id="cart-icon" src="image/cart-icon-16.png" alt="Cart" onerror="this.onerror=null;this.src='image/IG.jpg';"/>
           <span id="cart-count" class="cart-count">0</span>
+          <div id="cart-modal" class="cart-modal">
+            <div class="cart-modal-content">
+              <h3>Keranjang</h3>
+              <ul id="cart-items" class="cart-items"></ul>
+              <div class="cart-modal-footer">
+                <button id="close-cart" class="auth-btn" style="margin-top:10px;">Tutup</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -143,11 +152,72 @@ navLinks.forEach(link => {
 let cartCount = 0;
 const cartCountElem = document.getElementById('cart-count');
 const orderBtns = document.querySelectorAll('.order-btn');
-orderBtns.forEach(btn => {
+const cartModal = document.getElementById('cart-modal');
+const cartIcon = document.getElementById('cart-icon');
+const cartItemsElem = document.getElementById('cart-items');
+const closeCartBtn = document.getElementById('close-cart');
+let cart = [];
+
+function renderCart() {
+  cartItemsElem.innerHTML = '';
+  if (cart.length === 0) {
+    cartItemsElem.innerHTML = '<li style="text-align:center;color:#888;">Keranjang kosong</li>';
+    return;
+  }
+  cart.forEach((item, idx) => {
+    const li = document.createElement('li');
+    li.className = 'cart-item';
+    li.innerHTML = `
+      <span>${item.name} x <input type="number" min="1" value="${item.qty}" data-idx="${idx}" class="cart-qty-input" style="width:40px;"> </span>
+      <button class="cart-remove-btn" data-idx="${idx}">Hapus</button>
+    `;
+    cartItemsElem.appendChild(li);
+  });
+}
+
+cartIcon.addEventListener('click', () => {
+  renderCart();
+  cartModal.classList.add('show');
+});
+closeCartBtn.addEventListener('click', () => {
+  cartModal.classList.remove('show');
+});
+
+cartItemsElem.addEventListener('input', function(e) {
+  if (e.target.classList.contains('cart-qty-input')) {
+    const idx = e.target.getAttribute('data-idx');
+    let val = parseInt(e.target.value);
+    if (val < 1 || isNaN(val)) val = 1;
+    cart[idx].qty = val;
+    updateCartCount();
+  }
+});
+cartItemsElem.addEventListener('click', function(e) {
+  if (e.target.classList.contains('cart-remove-btn')) {
+    const idx = e.target.getAttribute('data-idx');
+    cart.splice(idx, 1);
+    updateCartCount();
+    renderCart();
+  }
+});
+
+function updateCartCount() {
+  cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  cartCountElem.textContent = cartCount;
+}
+
+orderBtns.forEach((btn, i) => {
   btn.addEventListener('click', function() {
     btn.classList.add('clicked');
-    cartCount++;
-    cartCountElem.textContent = cartCount;
+    // Simulasi nama produk
+    const name = 'Produk ' + (i+1);
+    const found = cart.find(item => item.name === name);
+    if (found) {
+      found.qty++;
+    } else {
+      cart.push({ name, qty: 1 });
+    }
+    updateCartCount();
     cartCountElem.classList.add('bump');
     showToast('Pesanan ditambahkan ke keranjang!');
     setTimeout(() => {

@@ -300,4 +300,78 @@ body {
   background: #27ae60;
 }
 
+/* Cart Modal */
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+.cart-modal.show {
+  display: flex;
+}
+.cart-modal-content {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 28px 24px 18px 24px;
+  min-width: 320px;
+  max-width: 90vw;
+  min-height: 120px;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+}
+.cart-modal-content h3 {
+  margin-top: 0;
+  color: #7b3f00;
+  text-align: center;
+}
+.cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+.cart-item:last-child {
+  border-bottom: none;
+}
+.cart-qty-input {
+  margin: 0 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 1rem;
+  width: 40px;
+}
+.cart-remove-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.cart-remove-btn:hover {
+  background: #c0392b;
+}
+.cart-modal-footer {
+  text-align: right;
+}
+@media (max-width: 500px) {
+  .cart-modal-content { min-width: 90vw; }
+}
+
 
