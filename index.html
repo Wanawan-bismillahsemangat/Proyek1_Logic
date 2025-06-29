@@ -163,6 +163,36 @@
   </div>
 </div>
 
+<!-- Testimoni & Rating Section -->
+<section id="testimoni" class="testimoni-section">
+  <h2 class="testimoni-title">Testimoni & Rating Pelanggan</h2>
+  <div class="testimoni-container">
+    <div class="testimoni-list" id="testimoni-list">
+      <!-- Testimoni akan muncul di sini -->
+    </div>
+    <form id="testimoni-form" class="testimoni-form">
+      <h3>Beri Rating & Review Menu</h3>
+      <select id="testimoni-menu" required>
+        <option value="">Pilih Menu</option>
+        <option value="Espresso">Espresso</option>
+        <option value="Cappuccino">Cappuccino</option>
+        <option value="Caramel Latte">Caramel Latte</option>
+        <option value="Kopi Susu Gula Aren">Kopi Susu Gula Aren</option>
+      </select>
+      <div class="testimoni-rating" id="testimoni-rating">
+        <span data-rate="1">★</span>
+        <span data-rate="2">★</span>
+        <span data-rate="3">★</span>
+        <span data-rate="4">★</span>
+        <span data-rate="5">★</span>
+      </div>
+      <input type="text" id="testimoni-nama" placeholder="Nama Kamu" required />
+      <textarea id="testimoni-text" placeholder="Tulis review kamu di sini..." required></textarea>
+      <button type="submit" class="auth-btn">Kirim Testimoni 🎈</button>
+    </form>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="footer">
   <p>Lorem ipsum dolor sit amet, consectet adscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -170,6 +200,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/checkout.js"></script>
+<script src="js/testimoni.js"></script>
 
 </body>
 </html>
