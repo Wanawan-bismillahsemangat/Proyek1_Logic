@@ -147,12 +147,29 @@
 </section>
 
 
+<!-- Checkout Modal -->
+<div id="checkout-modal" class="checkout-modal">
+  <div class="checkout-modal-content">
+    <h3>Checkout Pesanan</h3>
+    <div id="checkout-items" class="checkout-items"></div>
+    <div class="checkout-total funky">Total: <span id="checkout-total">Rp 0</span></div>
+    <form id="checkout-form">
+      <input type="text" id="checkout-name" placeholder="Nama Lengkap" required />
+      <input type="text" id="checkout-phone" placeholder="No. HP / WhatsApp" required />
+      <input type="text" id="checkout-address" placeholder="Alamat Pengantaran" required />
+      <button type="submit" class="auth-btn">Konfirmasi & Pesan 🎉</button>
+    </form>
+    <button id="close-checkout" class="auth-btn" style="margin-top:10px;background:#e74c3c;">Batal</button>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer class="footer">
   <p>Lorem ipsum dolor sit amet, consectet adscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/checkout.js"></script>
 
 </body>
 </html>
