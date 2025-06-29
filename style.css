@@ -452,8 +452,37 @@ body {
 .cart-modal-footer {
   text-align: right;
 }
-@media (max-width: 500px) {
-  .cart-modal-content { min-width: 90vw; }
+.cart-modal-footer .auth-btn,
+.cart-modal-footer #close-cart {
+  background: #7b3f00;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-right: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ffb84d55;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  letter-spacing: 1px;
+  min-width: 110px;
+}
+.cart-modal-footer .auth-btn:hover,
+.cart-modal-footer #close-cart:hover {
+  background: #a0522d;
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 4px 16px #ffb84d88;
+}
+.cart-modal-footer #close-cart {
+  background: #e74c3c;
+  margin-right: 0;
+}
+.cart-modal-footer #close-cart:hover {
+  background: #c0392b;
+  transform: scale(1.04) rotate(1deg);
 }
 
 /* Checkout Modal */
