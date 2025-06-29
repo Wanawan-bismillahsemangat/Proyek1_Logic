@@ -549,7 +549,27 @@ body {
 #checkout-form input:focus {
   border: 2px solid #ff9800;
 }
-#close-checkout {
+#checkout-form .auth-btn {
+  background: #7b3f00;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ffb84d55;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  letter-spacing: 1px;
+}
+#checkout-form .auth-btn:hover {
+  background: #a0522d;
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 4px 16px #ffb84d88;
+}
+#close-checkout.auth-btn {
   background: #e74c3c;
   color: #fff;
   border: none;
@@ -559,11 +579,15 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-top: 8px;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ffb84d55;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  letter-spacing: 1px;
 }
-#close-checkout:hover {
+#close-checkout.auth-btn:hover {
   background: #c0392b;
-  transform: scale(1.04);
+  transform: scale(1.04) rotate(1deg);
+  box-shadow: 0 4px 16px #ffb84d88;
 }
 @media (max-width: 600px) {
   .checkout-modal-content { min-width: 98vw; padding: 18px 4vw; }
