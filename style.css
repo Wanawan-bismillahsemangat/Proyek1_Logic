@@ -117,26 +117,82 @@ body {
   padding: 80px 40px;
 }
 
+.menu-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(123,63,0,0.10), 0 1.5px 8px #ffe5c0;
+  padding: 0 0 18px 0;
+  margin: 18px 12px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+  overflow: hidden;
+  border: 2.5px dashed #ffe5c0;
+}
+
+.menu-card:hover {
+  transform: translateY(-7px) scale(1.04) rotate(-1.5deg);
+  box-shadow: 0 8px 32px #ffb84d55, 0 2px 12px #ffe5c0;
+  border-color: #ffb84d;
+}
+
+.menu-img {
+  width: 100%;
+  height: 140px;
+  background: #eee center center/cover no-repeat;
+  border-radius: 18px 18px 0 0;
+  margin-bottom: 0;
+  border-bottom: 2px solid #ffe5c0;
+  transition: filter 0.2s;
+}
+
+.menu-card:hover .menu-img {
+  filter: brightness(1.08) saturate(1.2) drop-shadow(0 2px 8px #ffb84d88);
+}
+
+.menu-info {
+  padding: 16px 18px 8px 18px;
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 1.18rem;
+  font-weight: bold;
+  color: #7b3f00;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+}
+
+.menu-desc {
+  font-size: 0.98rem;
+  color: #a0522d;
+  margin-bottom: 7px;
+  font-style: italic;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+}
+
+.menu-price {
+  font-size: 1.08rem;
+  font-weight: bold;
+  color: #ff9800;
+  background: #fffbe6;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 3px 14px;
+  margin-bottom: 7px;
+  box-shadow: 0 1px 4px #ffe5c0;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+}
+
 .menu-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 60px;
-}
-
-.menu-card {
-  text-align: center;
-}
-
-.menu-img {
-  width: 200px;
-  height: 240px;
-  background-color: #eee;
-  border-radius: 40px;
-  background-image: url('transparent-placeholder.png'); /* transparan bg checker pattern */
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 20px;
+  gap: 10px;
 }
 
 .order-btn {
