@@ -1,0 +1,76 @@
+body.auth-bg {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg-url, url('../image/IG.jpg')) no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 36px 32px 28px 32px;
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+}
+.auth-card h2 {
+  margin-bottom: 24px;
+  color: #7b3f00;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.auth-card input {
+  padding: 10px 14px;
+  border-radius: 7px;
+  border: 1px solid #cfcfcf;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.auth-card input:focus {
+  border: 1.5px solid #7b3f00;
+}
+.auth-btn {
+  background: #7b3f00;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+.auth-btn:hover {
+  background: #a0522d;
+  transform: scale(1.04);
+}
+.auth-link {
+  margin-top: 18px;
+  font-size: 0.98rem;
+}
+.auth-link a {
+  color: #7b3f00;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.auth-link a:hover {
+  color: #a0522d;
+}
