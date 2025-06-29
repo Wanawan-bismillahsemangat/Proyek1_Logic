@@ -17,14 +17,14 @@
           <li><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
-          <li><a href="#">Location</a></li>
+          <li><a href="#location">Location</a></li>
         </ul>
       </nav>
       <div class="icons">
         <a href="/Website projek 1/Login/index.html">
-            <img src="image/pngtree-user-icon-image_1187018-removebg-preview.png" alt="User" />
+            <img src="image/pngtree-user-icon-image_1187018-removebg-preview.png" alt="User" onerror="this.onerror=null;this.src='image/IG.jpg';"/>
         </a>
-        <img src="image/cart-icon-16.png" alt="Cart" />
+        <img src="image/cart-icon-16.png" alt="Cart" onerror="this.onerror=null;this.src='image/IG.jpg';"/>
       </div>
     </div>
   </header>
@@ -119,6 +119,46 @@
 <footer class="footer">
   <p>Lorem ipsum dolor sit amet, consectet adscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </footer>
+
+<script>
+// Smooth scroll for nav links
+const navLinks = document.querySelectorAll('.nav-links a');
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// Interaktif tombol Tambah Pesanan
+const orderBtns = document.querySelectorAll('.order-btn');
+orderBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    btn.classList.add('clicked');
+    showToast('Pesanan ditambahkan!');
+    setTimeout(() => btn.classList.remove('clicked'), 300);
+  });
+});
+
+// Notifikasi sederhana
+function showToast(msg) {
+  let toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerText = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => { toast.classList.add('show'); }, 10);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 1500);
+}
+</script>
 
 </body>
 </html>
