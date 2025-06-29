@@ -21,10 +21,13 @@
         </ul>
       </nav>
       <div class="icons">
-        <a href="/Website projek 1/Login/index.html">
+        <a href="auth/login.html">
             <img src="image/pngtree-user-icon-image_1187018-removebg-preview.png" alt="User" onerror="this.onerror=null;this.src='image/IG.jpg';"/>
         </a>
-        <img src="image/cart-icon-16.png" alt="Cart" onerror="this.onerror=null;this.src='image/IG.jpg';"/>
+        <div class="cart-wrapper" style="position:relative;display:inline-block;">
+          <img id="cart-icon" src="image/cart-icon-16.png" alt="Cart" onerror="this.onerror=null;this.src='image/IG.jpg';"/>
+          <span id="cart-count" class="cart-count">0</span>
+        </div>
       </div>
     </div>
   </header>
@@ -106,7 +109,7 @@
     </ul>
 
     <button class="login-btn">
-        <a href="/Website projek 1/Login/index.html">
+        <a href="auth/login.html">
             <img src="image/pngtree-user-icon-image_1187018-removebg-preview.png" alt="User Icon" />
         </a>
       Login your account
@@ -136,13 +139,21 @@ navLinks.forEach(link => {
   });
 });
 
-// Interaktif tombol Tambah Pesanan
+// Fitur keranjang
+let cartCount = 0;
+const cartCountElem = document.getElementById('cart-count');
 const orderBtns = document.querySelectorAll('.order-btn');
 orderBtns.forEach(btn => {
   btn.addEventListener('click', function() {
     btn.classList.add('clicked');
-    showToast('Pesanan ditambahkan!');
-    setTimeout(() => btn.classList.remove('clicked'), 300);
+    cartCount++;
+    cartCountElem.textContent = cartCount;
+    cartCountElem.classList.add('bump');
+    showToast('Pesanan ditambahkan ke keranjang!');
+    setTimeout(() => {
+      btn.classList.remove('clicked');
+      cartCountElem.classList.remove('bump');
+    }, 300);
   });
 });
 

@@ -274,4 +274,30 @@ body {
   transform: translateX(-50%) scale(1);
 }
 
+/* Cart Badge */
+.cart-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 7px;
+  min-width: 22px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s, background 0.2s;
+  z-index: 2;
+}
+.cart-count.bump {
+  transform: scale(1.2);
+  background: #27ae60;
+}
+
 
