@@ -23,6 +23,14 @@ const cartItemsElem = document.getElementById('cart-items');
 const closeCartBtn = document.getElementById('close-cart');
 let cart = [];
 
+function getMenuImage(name) {
+  if (name === 'Espresso') return 'image/devin-avery-B3u-SJbCy0U-unsplash.jpg';
+  if (name === 'Cappuccino') return 'image/tentang%20kami.img.jpg';
+  if (name === 'Caramel Latte') return 'image/IG.jpg';
+  if (name === 'Kopi Susu Gula Aren') return 'image/pngtree-user-icon-image_1187018-removebg-preview.png';
+  return 'image/IG.jpg';
+}
+
 function renderCart() {
   cartItemsElem.innerHTML = '';
   if (cart.length === 0) {
@@ -30,10 +38,13 @@ function renderCart() {
     return;
   }
   cart.forEach((item, idx) => {
+    const imgSrc = getMenuImage(item.name);
     const li = document.createElement('li');
     li.className = 'cart-item';
     li.innerHTML = `
-      <span>${item.name} x <input type="number" min="1" value="${item.qty}" data-idx="${idx}" class="cart-qty-input" style="width:40px;"> </span>
+      <img class="cart-item-img" src="${imgSrc}" alt="${item.name}" />
+      <span class="cart-item-name">${item.name}</span>
+      <span>x <input type="number" min="1" value="${item.qty}" data-idx="${idx}" class="cart-qty-input" style="width:40px;"> </span>
       <button class="cart-remove-btn" data-idx="${idx}">Hapus</button>
     `;
     cartItemsElem.appendChild(li);
